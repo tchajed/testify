@@ -1,6 +1,8 @@
 Testify - Thou Shalt Write Tests
 ================================
 
+[![Build Status](https://travis-ci.org/stretchr/testify.svg)](https://travis-ci.org/stretchr/testify)
+
 Go code (golang) set of packages that provide many tools for testifying that your code will behave as you intend.
 
 Features include:
@@ -146,7 +148,7 @@ type MyMockedObject struct{
 // NOTE: This method is not being tested here, code that uses this object is.
 func (m *MyMockedObject) DoSomething(number int) (bool, error) {
 
-  args := m.Mock.Called(number)
+  args := m.Called(number)
   return args.Bool(0), args.Error(1)
 
 }
@@ -169,7 +171,7 @@ func TestSomething(t *testing.T) {
   targetFuncThatDoesSomethingWithObj(testObj)
 
   // assert that the expectations were met
-  testObj.Mock.AssertExpectations(t)
+  testObj.AssertExpectations(t)
 
 }
 ```
